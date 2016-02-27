@@ -35,6 +35,17 @@ module.exports = function(grunt) {
 				 dest: 'dist/<%= pkg.name %>.css'
 			 }
 		 },
+		 sass: {
+			 options: {
+				 sourcemap: 'none',
+				 //style: 'compressed'
+			 },
+			 dist: {
+				 files: {
+					 'dist/pathfinder.css': 'src/css/core.scss'
+				 }
+			 }
+		 },
 		 jshint:  {
 			 options:   {
 				 curly:   true,
@@ -73,8 +84,9 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-watch');
+	grunt.loadNpmTasks('grunt-contrib-sass');
 
 	// Default task.
-	grunt.registerTask('default', ['jshint', 'uglify', 'replace', 'cssmin']);
+	grunt.registerTask('default', ['jshint', 'uglify', 'replace', 'sass']);
 
 };
